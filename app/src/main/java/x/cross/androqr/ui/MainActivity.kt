@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         view = ActivityMainBinding.inflate(layoutInflater)
         setContentView(view.root)
 
+        supportActionBar?.hide()
+
         openQRScanner()
     }
 
