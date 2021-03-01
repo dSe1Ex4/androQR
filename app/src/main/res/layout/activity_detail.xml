@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.DetailActivity">
+
+    <ImageView
+        android:id="@+id/img_person"
+        android:layout_width="220dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginBottom="46dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/tv_second_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_person" />
+
+    <TextView
+        android:id="@+id/tv_second_name"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="15dp"
+        android:text="SecondName"
+        app:layout_constraintBottom_toTopOf="@+id/tv_parent_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_parent_name"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="ParentName"
+        app:layout_constraintBottom_toTopOf="@+id/tv_weapon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_second_name" />
+
+    <TextView
+        android:id="@+id/tv_weapon"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Weapon"
+        app:layout_constraintBottom_toTopOf="@+id/tv_role"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_parent_name" />
+
+    <TextView
+        android:id="@+id/tv_role"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="102dp"
+        android:text="Role"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weapon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
