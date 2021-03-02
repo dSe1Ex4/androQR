@@ -8,73 +8,16 @@
 
     <ImageView
         android:id="@+id/img_person"
-        android:layout_width="220dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_name"
+        android:layout_width="230dp"
+        android:layout_height="270dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="16dp"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/tv_second_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_person" />
-
-    <TextView
-        android:id="@+id/tv_second_name"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="15dp"
-        android:text="SecondName"
-        app:layout_constraintBottom_toTopOf="@+id/tv_parent_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-    <TextView
-        android:id="@+id/tv_parent_name"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="20dp"
-        android:text="ParentName"
-        app:layout_constraintBottom_toTopOf="@+id/tv_weapon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_second_name" />
-
-    <TextView
-        android:id="@+id/tv_weapon"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="30dp"
-        android:text="Weapon"
-        app:layout_constraintBottom_toTopOf="@+id/tv_role"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_parent_name" />
-
-    <TextView
-        android:id="@+id/tv_role"
-        android:layout_width="170dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="32dp"
-        android:text="Role"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_weapon" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fbut_to_scanner"
+        android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -83,5 +26,142 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_code_scanner_auto_focus_off" />
+
+    <EditText
+        android:id="@+id/pt_secondname"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Second_Name"
+        app:layout_constraintBottom_toTopOf="@+id/pt_parentname"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_role"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Role"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.841" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="false"
+        android:text="Role:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pt_role"
+        app:layout_constraintEnd_toStartOf="@+id/pt_role"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_name"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/pt_secondname"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_weapon"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="12dp"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Weapon"
+        app:layout_constraintBottom_toTopOf="@+id/pt_role"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="13dp"
+        android:clickable="false"
+        android:text="Parent_name:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pt_parentname"
+        app:layout_constraintEnd_toStartOf="@+id/pt_parentname"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbut_to_scanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="11dp"
+        android:clickable="false"
+        android:text="Name:"
+        android:textSize="20sp"
+        app:drawableTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/pt_name"
+        app:layout_constraintEnd_toStartOf="@+id/pt_name"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/pt_parentname"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:editable="false"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Parent_Name"
+        app:layout_constraintBottom_toTopOf="@+id/pt_weapon"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="14dp"
+        android:clickable="false"
+        android:text="Second_name:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pt_secondname"
+        app:layout_constraintEnd_toStartOf="@+id/pt_secondname"
+        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="15dp"
+        android:clickable="false"
+        android:text="Type of weapon:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pt_weapon"
+        app:layout_constraintEnd_toStartOf="@+id/pt_weapon"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
