@@ -10,8 +10,7 @@
         android:id="@+id/img_person"
         android:layout_width="220dp"
         android:layout_height="0dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginBottom="46dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toTopOf="@+id/tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,12 +65,23 @@
         android:id="@+id/tv_role"
         android:layout_width="170dp"
         android:layout_height="30dp"
-        android:layout_marginBottom="102dp"
+        android:layout_marginBottom="32dp"
         android:text="Role"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_weapon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_code_scanner_auto_focus_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

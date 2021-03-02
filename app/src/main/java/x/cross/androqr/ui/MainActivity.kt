@@ -1,6 +1,7 @@
 package x.cross.androqr.ui
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
                 }
+                startActivity(Intent(this, DetailActivity::class.java))
             }
 
             // Ошибка инициализации камеры
