@@ -1,5 +1,6 @@
 package x.cross.androqr.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -38,6 +39,8 @@ class DetailActivity : AppCompatActivity() {
             tvSecondName.text = person.secondName
             tvRole.text = person.name
             tvWeapon.text = person.weapon.name
+
+            fbutToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
         }
 
     }
