@@ -34,7 +34,7 @@ android {
         viewBinding true
     }
 }
-
+apply plugin: 'kotlin-kapt'
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -63,4 +63,8 @@ dependencies {
 
     //EasyPermissions
     implementation 'pub.devrel:easypermissions:3.0.0'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt  'com.github.bumptech.glide:compiler:4.11.0'
 }
