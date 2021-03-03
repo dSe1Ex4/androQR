@@ -14,6 +14,7 @@ import x.cross.androqr.model.RoleData
 import x.cross.androqr.model.WeaponData
 import x.cross.androqr.ui.viewmodels.DetailViewModel
 import x.cross.androqr.ui.viewmodels.DetailViewModelFactory
+import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var view: ActivityDetailBinding
@@ -27,6 +28,14 @@ class DetailActivity : AppCompatActivity() {
         setContentView(view.root)
 
         supportActionBar?.hide()
+
+        val media = "https://i.pinimg.com/564x/c0/45/7b/c0457b818a42251b13a40245940c3ffe.jpg"
+        Glide.with(this)
+                .load(media) //источник изображения указан либо как путь к каталогу, URI или URL адреса.
+                .override(300, 300)
+                .circleCrop() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
+                .into(view.imgPerson)// представление изображения, куда будет помещено настоящее изображение
+
 
         viewModel = ViewModelProvider(this, DetailViewModelFactory(
                 PersonData("NFD3548d9sd8","Koval","Pidor", "NoFather", WeaponData(1, "Dildo")),
