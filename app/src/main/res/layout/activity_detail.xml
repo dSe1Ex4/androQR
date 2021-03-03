@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/et_name"
+        app:layout_constraintBottom_toTopOf="@+id/et_role"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -61,21 +61,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.9" />
 
-    <TextView
-        android:id="@+id/tv_role"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="false"
-        android:text="@string/a_detail_tv_role_title"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_role"
-        app:layout_constraintEnd_toStartOf="@+id/et_role"
-        app:layout_constraintHorizontal_bias="0.864"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/a_detail_tv_role_desc"/>
-
     <EditText
         android:id="@+id/et_name"
         android:layout_width="200dp"
@@ -90,26 +75,12 @@
         app:layout_constraintBottom_toTopOf="@+id/et_second_name"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/et_weapon"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="12dp"
-        android:ems="10"
-        android:inputType="none"
-        android:text="Weapon"
-        android:textColor="@color/black"
-        android:enabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/et_role"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <TextView
         android:id="@+id/tv_parent_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="12dp"
         android:clickable="false"
         android:text="@string/a_detail_tv_parent_name_title"
         android:textSize="20sp"
@@ -138,13 +109,12 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
         android:ems="10"
+        android:enabled="false"
         android:inputType="none"
         android:text="Parent_Name"
         android:textColor="@color/black"
-        android:enabled="false"
-        app:layout_constraintBottom_toTopOf="@+id/et_weapon"
+        app:layout_constraintBottom_toTopOf="@+id/rv_extra"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
@@ -152,7 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="12dp"
         android:clickable="false"
         android:text="@string/a_detail_tv_second_name_title"
         android:textSize="20sp"
@@ -162,19 +132,36 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contentDescription="@string/a_detail_tv_second_name_desc"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_extra"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
-        android:id="@+id/tv_weapon"
+        android:id="@+id/tv_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="15dp"
-        android:clickable="false"
-        android:text="@string/a_detail_tv_weapon_title"
+        android:layout_marginBottom="12dp"
+        android:text="Role:"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/et_weapon"
-        app:layout_constraintEnd_toStartOf="@+id/et_weapon"
-        app:layout_constraintHorizontal_bias="0.719"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="@string/a_detail_tv_weapon_desc"/>
+        app:layout_constraintBottom_toBottomOf="@+id/et_role"
+        app:layout_constraintEnd_toStartOf="@+id/et_role"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_role"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Role"
+        app:layout_constraintBottom_toTopOf="@+id/et_name"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
