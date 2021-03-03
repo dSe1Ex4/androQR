@@ -26,6 +26,8 @@ class DetailActivity : AppCompatActivity() {
         view = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(view.root)
 
+        supportActionBar?.hide()
+
         viewModel = ViewModelProvider(this, DetailViewModelFactory(
                 PersonData("NFD3548d9sd8","Koval","Pidor", "NoFather", WeaponData(1, "Dildo")),
                 RoleData(1L, "Pidor")))
@@ -34,13 +36,13 @@ class DetailActivity : AppCompatActivity() {
         with(view){
             val person = viewModel.personData
 
-            tvName.text = person.name
-            tvParentName.text = person.parentName
-            tvSecondName.text = person.secondName
-            tvRole.text = person.name
-            tvWeapon.text = person.weapon.name
+            etName.setText(person.name)
+            etParentName.setText(person.parentName)
+            etSecondName.setText(person.secondName)
+            etRole.setText(person.name)
+            etWeapon.setText(person.weapon.name)
 
-            fbutToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
+            floatButToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
         }
 
     }
