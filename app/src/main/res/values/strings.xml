@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">AndroQR</string>
+    <string name="a_splash_logo_desc">Application logo</string>
+
+    <string name="a_detail_btn_scanner_desc">Return to Scanner Button</string>
+    <string name="a_detail_img_desc">Image person</string>
+
+    <string name="a_detail_tv_role_desc">Role text view</string>
+    <string name="a_detail_tv_role_title">Role:</string>
+
+    <string name="a_detail_tv_name_desc">Name text view</string>
+    <string name="a_detail_tv_name_title">Name:</string>
+
+    <string name="a_detail_tv_second_name_desc">Second name text view</string>
+    <string name="a_detail_tv_second_name_title">Second name:</string>
+
+    <string name="a_detail_tv_weapon_desc">Weapon text view</string>
+    <string name="a_detail_tv_weapon_title">Weapon:</string>
+
+    <string name="a_detail_tv_parent_name_desc">Parent name text view</string>
+    <string name="a_detail_tv_parent_name_title">Parent name:</string>
+
+    <string name="a_detail_tv_app_name_desc">Application name text view</string>
 </resources>
