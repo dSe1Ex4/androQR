@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        app:srcCompat="@android:drawable/sym_def_app_icon"
+        android:contentDescription="@string/a_detail_img_desc" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/float_but_to_scanner"
@@ -28,7 +29,8 @@
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_code_scanner_auto_focus_off" />
+        app:srcCompat="@drawable/ic_code_scanner_auto_focus_off"
+        android:contentDescription="@string/a_detail_btn_scanner_desc" />
 
     <EditText
         android:id="@+id/et_second_name"
@@ -43,6 +45,21 @@
         android:enabled="false"
         app:layout_constraintBottom_toTopOf="@+id/et_parent_name"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/et_role"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:inputType="none"
+        android:text="Role"
+        android:textColor="@color/black"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9" />
 
     <EditText
         android:id="@+id/et_name"
@@ -65,25 +82,27 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:clickable="false"
-        android:text="Parent_name:"
+        android:text="@string/a_detail_tv_parent_name_title"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/et_parent_name"
         app:layout_constraintEnd_toStartOf="@+id/et_parent_name"
         app:layout_constraintHorizontal_bias="0.773"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/a_detail_tv_parent_name_desc" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Name:"
+        android:text="@string/a_detail_tv_name_title"
         android:textSize="20sp"
         app:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/et_name"
         app:layout_constraintEnd_toStartOf="@+id/et_name"
         app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/a_detail_tv_name_desc"/>
 
     <EditText
         android:id="@+id/et_parent_name"
@@ -105,12 +124,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:clickable="false"
-        android:text="Second_name:"
+        android:text="@string/a_detail_tv_second_name_title"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/et_second_name"
         app:layout_constraintEnd_toStartOf="@+id/et_second_name"
         app:layout_constraintHorizontal_bias="0.765"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/a_detail_tv_second_name_desc"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_extra"
