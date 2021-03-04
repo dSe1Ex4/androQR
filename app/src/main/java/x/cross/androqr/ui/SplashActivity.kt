@@ -10,7 +10,7 @@ import com.nikitagordia.cosin.textAdapters.DefaultBinaryTextAdapter
 import kotlinx.coroutines.*
 import x.cross.androqr.databinding.ActivitySplashBinding
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
     companion object{
         private const val TIME_FOR_LOAD = 2_500L
     }

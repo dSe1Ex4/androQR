@@ -11,10 +11,11 @@ import pub.devrel.easypermissions.EasyPermissions
 import x.cross.androqr.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     companion object{
         private const val RQ_CODE_CAMERA = 1
     }
+
 
     private lateinit var view: ActivityMainBinding
     private lateinit var codeScanner: CodeScanner
