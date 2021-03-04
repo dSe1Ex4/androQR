@@ -21,4 +21,7 @@
     <string name="a_detail_tv_parent_name_title">Parent name:</string>
 
     <string name="a_detail_tv_app_name_desc">Application name text view</string>
+
+    <string name ="a_main_ab_error_camera_title">Camera initialization error:</string>
+    <string name ="a_main_ab_error_camera_permision_title">App requires permission to use camera</string>
 </resources>
