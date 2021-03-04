@@ -21,4 +21,10 @@
     <string name="a_detail_tv_parent_name_title">Parent name:</string>
 
     <string name="a_detail_tv_app_name_desc">Application name text view</string>
+
+    <string name="a_auth_tv_username_title">Username</string>
+    <string name="a_auth_tv_password_title">Password</string>
+    <string name="a_auth_tv_login_title">LOGIN</string>
+    <string name="a_auth_b_sign_in_title">sign in</string>
+
 </resources>
