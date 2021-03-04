@@ -61,7 +61,7 @@ class DetailActivity : BaseActivity() {
                 layoutManager = LinearLayoutManager(this@DetailActivity)
                 adapter = ExtraInfoAdapter(arrayOf(
                     arrayOf("Weapon:", "Dildo"),
-                    arrayOf("Sex:", "TransPidor"),
+                    arrayOf("Sex:", "Отсутствует"),
                     arrayOf("Like:", "Vitaly"),
                     arrayOf("Like:", "Vitaly"),
                     arrayOf("Like:", "Vitaly"),

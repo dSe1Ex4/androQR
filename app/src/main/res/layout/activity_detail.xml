@@ -130,6 +130,7 @@
         android:id="@+id/rv_extra"
         android:layout_width="match_parent"
         android:layout_height="220dp"
+        tools:listitem="@layout/rv_item_extra"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

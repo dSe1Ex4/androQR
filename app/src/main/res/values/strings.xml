@@ -22,6 +22,6 @@
 
     <string name="a_detail_tv_app_name_desc">Application name text view</string>
 
-    <string name ="a_main_ab_error_camera_title">Camera initialization error:</string>
-    <string name ="a_main_ab_error_camera_permision_title">App requires permission to use camera</string>
+    <string name ="alert_camera_error">Camera initialization error:</string>
+    <string name ="alert_camera_permission_denied">App requires permission to scan QR code</string>
 </resources>

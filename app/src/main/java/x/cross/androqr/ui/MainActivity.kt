@@ -6,11 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import com.budiyev.android.codescanner.*
 import pub.devrel.easypermissions.AfterPermissionGranted
 import pub.devrel.easypermissions.EasyPermissions
 import x.cross.androqr.databinding.ActivityMainBinding
+import x.cross.androqr.R
 
 
 class MainActivity : BaseActivity() {
@@ -58,25 +58,26 @@ class MainActivity : BaseActivity() {
 
             // Ошибка инициализации камеры
             codeScanner.errorCallback = ErrorCallback {
-                val builder = AlertDialog.Builder(this)
+                AlertDialog.Builder(this)
                         .setTitle("Error")
-                        .setMessage("@string/a_main_ab_error_camera_title + ${it.message}")
+                        .setMessage(getString(R.string.alert_camera_error) + {it.message})
                         .setPositiveButton("Ok",{ dialogInterface: DialogInterface, i: Int -> })
                         .show()
             }
 
-            view.scannerView.setOnClickListener {
-                codeScanner.startPreview()
-            }
+            view.scannerView.setOnClickListener { codeScanner.startPreview() }
         } else { //Нет разрешения на камеру
             EasyPermissions.requestPermissions(this, "Права суука дал живо!",
                     RQ_CODE_CAMERA, Manifest.permission.CAMERA)
-            //val string: String = getString(R.string.a_main_ab_error_camera_title)
-            val builder = AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    //.setMessage(string)
-                    .setPositiveButton("Ok",{dialogInterface: DialogInterface, i: Int -> })
-                    .show()
+
+            AlertDialog.Builder(this)
+                .setTitle("Error")
+                .setMessage(R.string.alert_camera_permission_denied)
+                .setPositiveButton("OK") { _: DialogInterface, _: Int ->
+                    EasyPermissions.requestPermissions(this,
+                            "Права суука дал живо!", RQ_CODE_CAMERA,
+                            Manifest.permission.CAMERA)
+                }.show()
         }
     }
 
