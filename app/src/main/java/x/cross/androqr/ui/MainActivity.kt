@@ -1,9 +1,11 @@
 package x.cross.androqr.ui
 
 import android.Manifest
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.budiyev.android.codescanner.*
 import pub.devrel.easypermissions.AfterPermissionGranted
@@ -56,10 +58,11 @@ class MainActivity : BaseActivity() {
 
             // Ошибка инициализации камеры
             codeScanner.errorCallback = ErrorCallback {
-                runOnUiThread {
-                    Toast.makeText(this, "Camera initialization error: ${it.message}",
-                            Toast.LENGTH_LONG).show()
-                }
+                val builder = AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("@string/a_main_ab_error_camera_title + ${it.message}")
+                        .setPositiveButton("Ok",{ dialogInterface: DialogInterface, i: Int -> })
+                        .show()
             }
 
             view.scannerView.setOnClickListener {
@@ -68,6 +71,12 @@ class MainActivity : BaseActivity() {
         } else { //Нет разрешения на камеру
             EasyPermissions.requestPermissions(this, "Права суука дал живо!",
                     RQ_CODE_CAMERA, Manifest.permission.CAMERA)
+            //val string: String = getString(R.string.a_main_ab_error_camera_title)
+            val builder = AlertDialog.Builder(this)
+                    .setTitle("Error")
+                    //.setMessage(string)
+                    .setPositiveButton("Ok",{dialogInterface: DialogInterface, i: Int -> })
+                    .show()
         }
     }
 
