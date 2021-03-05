@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:textAlignment="viewEnd"
         android:textSize="20sp"
-        tools:text="Extra Value"/>
+        tools:text="Extra Param:"/>
 
     <EditText
         android:id="@+id/et_param_value"
@@ -26,5 +26,7 @@
         android:focusable="false"
         android:inputType="none"
         android:textColor="@color/black"
-        tools:text="Param Value"/>
+        tools:text="Param Value"
+        android:autofillHints="none"
+        tools:ignore="LabelFor" />
 </LinearLayout>

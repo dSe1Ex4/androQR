@@ -20,7 +20,7 @@ class MainActivity : BaseActivity() {
 
 
     private lateinit var view: ActivityMainBinding
-    private lateinit var codeScanner: CodeScanner
+    private var codeScanner: CodeScanner? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,23 +33,35 @@ class MainActivity : BaseActivity() {
         openQRScanner()
     }
 
-    @AfterPermissionGranted(RQ_CODE_CAMERA)
     private fun openQRScanner(){
         //Есть ли разрешение
         if (EasyPermissions.hasPermissions(this, Manifest.permission.CAMERA)) {
-            codeScanner = CodeScanner(this, view.scannerView)
+            initQRScanner()
+        } else { //Нет разрешения на камеру
+            AlertDialog.Builder(this)
+                .setTitle("Info")
+                .setMessage(R.string.alert_camera_permission_denied)
+                .setPositiveButton("Give") { _: DialogInterface, _: Int -> reqCameraPermission()}
+                .show()
+        }
+    }
 
-            // Parameters (default values)
-            codeScanner.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
-            codeScanner.formats = CodeScanner.ALL_FORMATS // list of type BarcodeFormat,
+    @AfterPermissionGranted(RQ_CODE_CAMERA)
+    private fun initQRScanner(){
+        codeScanner = CodeScanner(this, view.scannerView)
+        // Parameters (default values)
+
+        codeScanner?.let { cs ->
+            cs.camera = CodeScanner.CAMERA_BACK // or CAMERA_FRONT or specific camera id
+            cs.formats = CodeScanner.ALL_FORMATS // list of type BarcodeFormat,
             // ex. listOf(BarcodeFormat.QR_CODE)
-            codeScanner.autoFocusMode = AutoFocusMode.SAFE // or CONTINUOUS
-            codeScanner.scanMode = ScanMode.SINGLE // or CONTINUOUS or PREVIEW
-            codeScanner.isAutoFocusEnabled = true // Whether to enable auto focus or not
-            codeScanner.isFlashEnabled = false // Whether to enable flash or not
+            cs.autoFocusMode = AutoFocusMode.SAFE // or CONTINUOUS
+            cs.scanMode = ScanMode.SINGLE // or CONTINUOUS or PREVIEW
+            cs.isAutoFocusEnabled = true // Whether to enable auto focus or not
+            cs.isFlashEnabled = false // Whether to enable flash or not
 
             // Код отсканирован
-            codeScanner.decodeCallback = DecodeCallback {
+            cs.decodeCallback = DecodeCallback {
                 runOnUiThread {
                     Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
                 }
@@ -57,28 +69,22 @@ class MainActivity : BaseActivity() {
             }
 
             // Ошибка инициализации камеры
-            codeScanner.errorCallback = ErrorCallback {
+            cs.errorCallback = ErrorCallback {
                 AlertDialog.Builder(this)
                         .setTitle("Error")
                         .setMessage(getString(R.string.alert_camera_error) + {it.message})
-                        .setPositiveButton("Ok",{ dialogInterface: DialogInterface, i: Int -> })
+                        .setPositiveButton("OK") { _: DialogInterface, _: Int -> }
                         .show()
             }
 
-            view.scannerView.setOnClickListener { codeScanner.startPreview() }
-        } else { //Нет разрешения на камеру
-            EasyPermissions.requestPermissions(this, "Права суука дал живо!",
-                    RQ_CODE_CAMERA, Manifest.permission.CAMERA)
-
-            AlertDialog.Builder(this)
-                .setTitle("Error")
-                .setMessage(R.string.alert_camera_permission_denied)
-                .setPositiveButton("OK") { _: DialogInterface, _: Int ->
-                    EasyPermissions.requestPermissions(this,
-                            "Права суука дал живо!", RQ_CODE_CAMERA,
-                            Manifest.permission.CAMERA)
-                }.show()
+            view.scannerView.setOnClickListener { cs.startPreview() }
         }
+    }
+
+    private fun reqCameraPermission(){
+        EasyPermissions.requestPermissions(this,
+                getString(R.string.alert_camera_permission_denied), RQ_CODE_CAMERA,
+                Manifest.permission.CAMERA)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -90,11 +96,11 @@ class MainActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        codeScanner.startPreview()
+        codeScanner?.startPreview()
     }
 
     override fun onPause() {
-        codeScanner.releaseResources()
+        codeScanner?.releaseResources()
         super.onPause()
     }
 }

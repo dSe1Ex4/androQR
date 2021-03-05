@@ -1,13 +1,15 @@
 package x.cross.androqr.ui
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowInsets
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import com.nikitagordia.cosin.textAdapters.DefaultBinaryTextAdapter
 import kotlinx.coroutines.*
+import x.cross.androqr.Config
 import x.cross.androqr.databinding.ActivitySplashBinding
 
 class SplashActivity : BaseActivity() {
@@ -20,6 +22,8 @@ class SplashActivity : BaseActivity() {
     private lateinit var view: ActivitySplashBinding
     private lateinit var mainIntent: Intent
 
+    private var debugDialog: AlertDialog? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,14 @@ class SplashActivity : BaseActivity() {
         setContentView(view.root)
 
         supportActionBar?.hide()
+
+        if (Config.DEBUG){
+            debugDialog = AlertDialog.Builder(this)
+                .setTitle("Внимание!")
+                .setMessage("Это DEBUG версия приложения!")
+                .setPositiveButton("Понял") { _: DialogInterface, _: Int -> }
+                .show()
+        }
 
         setFullScreen()
 
@@ -55,6 +67,7 @@ class SplashActivity : BaseActivity() {
     override fun onPause() {
         super.onPause()
         activityScope.cancel()
+        debugDialog?.cancel()
     }
 
     private fun setFullScreen(){

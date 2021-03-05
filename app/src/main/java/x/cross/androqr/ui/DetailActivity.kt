@@ -16,6 +16,7 @@ import x.cross.androqr.model.WeaponData
 import x.cross.androqr.ui.viewmodels.DetailViewModel
 import x.cross.androqr.ui.viewmodels.DetailViewModelFactory
 import com.bumptech.glide.Glide
+import x.cross.androqr.BuildConfig
 import x.cross.androqr.ui.recycler.ExtraInfoAdapter
 
 class DetailActivity : BaseActivity() {
@@ -31,7 +32,7 @@ class DetailActivity : BaseActivity() {
 
         supportActionBar?.hide()
 
-        val media = "https://i.pinimg.com/564x/c0/45/7b/c0457b818a42251b13a40245940c3ffe.jpg"
+        val media = "https://sun9-13.userapi.com/impg/3AqImOXG_WIKG_DqEJ13zfKQwnO3hA6M8Yddtw/nN1EufMXRSE.jpg?size=428x603&quality=96&sign=cea1e97a834b7ca958ee72dbaa934604&type=album"
         Glide.with(this)
                 .load(media) //источник изображения указан либо как путь к каталогу, URI или URL адреса.
                 .override(300, 300)
@@ -39,10 +40,10 @@ class DetailActivity : BaseActivity() {
                 .into(view.imgPerson)// представление изображения, куда будет помещено настоящее изображение
 
 
-        val testPersonData = PersonData("NFD3548d9sd8","Koval","Pidor",
-                "NoFather",
+        val testPersonData = PersonData("7b8b6308-7fd4-4ce5-a726-65aad97311d5","Александра","Коваль",
+                "Викторовна",
                 WeaponData(1, "Dildo"),
-                RoleData(1L, "Pidor"))
+                RoleData(1L, "Участник"))
 
         viewModel = ViewModelProvider(this, DetailViewModelFactory(testPersonData))
                 .get(DetailViewModel::class.java)
@@ -60,15 +61,11 @@ class DetailActivity : BaseActivity() {
             rvExtra.apply {
                 layoutManager = LinearLayoutManager(this@DetailActivity)
                 adapter = ExtraInfoAdapter(arrayOf(
-                    arrayOf("Weapon:", "Dildo"),
-                    arrayOf("Sex:", "Отсутствует"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("Like:", "Vitaly"),
-                    arrayOf("OneLove:", "Vitaly")
+                    arrayOf("Транспорт:", "Машина"),
+                    arrayOf("Пол:", "Отсутствует"),
+                    arrayOf("Ракетка:", "Личная"),
+                    arrayOf("Рейтинг:", "5/10"),
+                    arrayOf("Проффессия:", "Спортсмен")
                 ))
             }
         }

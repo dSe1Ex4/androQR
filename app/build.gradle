@@ -5,6 +5,14 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        test {
+            storeFile file('A:\\AndroidProj\\androQR\\keystore_test.jks')
+            storePassword 'keystore_test'
+            keyAlias 'key0'
+            keyPassword 'keystore_test'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "29.0.3"
 
@@ -16,10 +24,17 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.test
     }
 
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

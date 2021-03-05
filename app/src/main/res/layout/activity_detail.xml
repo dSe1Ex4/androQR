@@ -48,7 +48,8 @@
         app:layout_constraintBottom_toTopOf="@+id/et_parent_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        tools:text="Second Name"/>
 
     <EditText
         android:id="@+id/et_name"
@@ -64,7 +65,8 @@
         app:layout_constraintBottom_toTopOf="@+id/et_second_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        tools:text="Person Name"/>
 
     <TextView
         android:id="@+id/tv_parent_name"
@@ -109,7 +111,8 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/rv_extra"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        tools:text="Person Name"/>
 
     <TextView
         android:id="@+id/tv_second_name"
@@ -161,6 +164,7 @@
         app:layout_constraintBottom_toTopOf="@+id/et_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        tools:text="Person Role"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
