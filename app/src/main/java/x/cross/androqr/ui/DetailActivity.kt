@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import x.cross.androqr.databinding.ActivityDetailBinding
@@ -15,8 +16,10 @@ import x.cross.androqr.model.WeaponData
 import x.cross.androqr.ui.viewmodels.DetailViewModel
 import x.cross.androqr.ui.viewmodels.DetailViewModelFactory
 import com.bumptech.glide.Glide
+import x.cross.androqr.BuildConfig
+import x.cross.androqr.ui.recycler.ExtraInfoAdapter
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
     private lateinit var view: ActivityDetailBinding
     private lateinit var viewModel: DetailViewModel
 
@@ -29,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        val media = "https://i.pinimg.com/564x/c0/45/7b/c0457b818a42251b13a40245940c3ffe.jpg"
+        val media = "https://sun9-13.userapi.com/impg/3AqImOXG_WIKG_DqEJ13zfKQwnO3hA6M8Yddtw/nN1EufMXRSE.jpg?size=428x603&quality=96&sign=cea1e97a834b7ca958ee72dbaa934604&type=album"
         Glide.with(this)
                 .load(media) //источник изображения указан либо как путь к каталогу, URI или URL адреса.
                 .override(300, 300)
@@ -37,9 +40,12 @@ class DetailActivity : AppCompatActivity() {
                 .into(view.imgPerson)// представление изображения, куда будет помещено настоящее изображение
 
 
-        viewModel = ViewModelProvider(this, DetailViewModelFactory(
-                PersonData("NFD3548d9sd8","Koval","Pidor", "NoFather", WeaponData(1, "Dildo")),
-                RoleData(1L, "Pidor")))
+        val testPersonData = PersonData("7b8b6308-7fd4-4ce5-a726-65aad97311d5","Александра","Коваль",
+                "Викторовна",
+                WeaponData(1, "Dildo"),
+                RoleData(1L, "Участник"))
+
+        viewModel = ViewModelProvider(this, DetailViewModelFactory(testPersonData))
                 .get(DetailViewModel::class.java)
 
         with(view){
@@ -48,10 +54,20 @@ class DetailActivity : AppCompatActivity() {
             etName.setText(person.name)
             etParentName.setText(person.parentName)
             etSecondName.setText(person.secondName)
-            etRole.setText(person.name)
-            etWeapon.setText(person.weapon.name)
+            etRole.setText(person.role.name)
 
             floatButToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
+
+            rvExtra.apply {
+                layoutManager = LinearLayoutManager(this@DetailActivity)
+                adapter = ExtraInfoAdapter(arrayOf(
+                    arrayOf("Транспорт:", "Машина"),
+                    arrayOf("Пол:", "Отсутствует"),
+                    arrayOf("Ракетка:", "Личная"),
+                    arrayOf("Рейтинг:", "5/10"),
+                    arrayOf("Проффессия:", "Спортсмен")
+                ))
+            }
         }
 
     }
