@@ -39,9 +39,9 @@ class MainActivity : BaseActivity() {
             initQRScanner()
         } else { //Нет разрешения на камеру
             AlertDialog.Builder(this)
-                .setTitle("Info")
+                .setTitle(getString(R.string.alert_info_title))
                 .setMessage(R.string.alert_camera_permission_denied)
-                .setPositiveButton("Give") { _: DialogInterface, _: Int -> reqCameraPermission()}
+                .setPositiveButton(getString(R.string.alert_give_text)) { _: DialogInterface, _: Int -> reqCameraPermission()}
                 .show()
         }
     }
@@ -71,9 +71,9 @@ class MainActivity : BaseActivity() {
             // Ошибка инициализации камеры
             cs.errorCallback = ErrorCallback {
                 AlertDialog.Builder(this)
-                        .setTitle("Error")
+                        .setTitle(getString(R.string.alert_error_title))
                         .setMessage(getString(R.string.alert_camera_error) + {it.message})
-                        .setPositiveButton("OK") { _: DialogInterface, _: Int -> }
+                        .setPositiveButton(getString(R.string.alert_camera_ok)) { _: DialogInterface, _: Int -> }
                         .show()
             }
 
