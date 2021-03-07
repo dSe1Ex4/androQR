@@ -1,3 +1,3 @@
 package x.cross.androqr.model
 
-data class RoleData(val uid:Long, val name: String)
+data class RoleData(val name: String)
