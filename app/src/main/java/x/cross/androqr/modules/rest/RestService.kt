@@ -11,7 +11,13 @@ import x.cross.androqr.model.dto.rest.InfoPerson
 import x.cross.androqr.model.dto.rest.RestInfo
 import x.cross.androqr.model.dto.rest.UserSession
 
+/**
+ * Обьект RestService предоставляет доступ к севису Rest
+ */
 object RestService {
+    /**
+    * Функция onAuth отвечает за авторизацию пользавтеля
+    */
     fun onAuth(login: String, password: String, onLoaded: OnInfoLoad<UserSession>) {
         RetrofitClient.getClient()
                 ?.auth(login, password)
@@ -33,7 +39,9 @@ object RestService {
                     }
                 })
     }
-
+    /**
+     * Функция onInfoPersonLoad отвечает за загрузку данных пользователя
+     */
     fun onInfoPersonLoad(session_id: String, uuid: String, onLoaded: OnInfoLoad<InfoPerson>) {
         RetrofitClient.getClient()
                 ?.personInfo(session_id, uuid)
@@ -55,7 +63,9 @@ object RestService {
                     }
                 })
     }
-
+    /**
+     * Функция onPersonImgLoad отвечает за загрузку фотографии пользователя
+     */
     fun onPersonImgLoad(session_id: String, uuid: String, onLoaded: OnDataLoad){
         RetrofitClient.getClient()
                 ?.personImg(session_id, uuid)
@@ -68,7 +78,6 @@ object RestService {
                         }
 
                     }
-
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                         onLoaded.onFailure(t)
 
@@ -80,14 +89,37 @@ object RestService {
     }
 }
 
+/**
+ *Итерфейс загрузки данных
+ */
 interface OnDataLoad {
+    /**
+     * При загрузке
+     */
     fun onLoaded(bytes: ByteArray)
+    /**
+     * При неправильной загрузке данныйх
+     */
     fun onFailure(throwable: Throwable)
+    /**
+     *При ошибке
+     */
     fun onError(response: Response<ResponseBody>)
 }
-
+/**
+ *Итерфейс загрузки по RestInfo
+ */
 interface OnInfoLoad<I : RestInfo> {
+    /**
+     * При загрузке
+     */
     fun onLoaded(info: I)
+    /**
+     * При неправильной загрузке данныйх
+     */
     fun onFailure(throwable: Throwable)
+    /**
+     *При ошибке
+     */
     fun onError(response: Response<I>)
 }
