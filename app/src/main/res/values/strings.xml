@@ -27,13 +27,15 @@
     <string name="a_auth_tv_login_title">LOGIN</string>
     <string name="a_auth_b_sign_in_title">sign in</string>
 
-    <string name ="alert_error_title">Error</string>
+    <string name="alert_error_title">Error</string>
 
-    <string name ="alert_info_title">Info</string>
-    <string name ="alert_give_text">Give</string>
-    <string name ="alert_camera_error">Camera initialization error:</string>
-    <string name ="alert_camera_ok">OK</string>
-    <string name ="alert_camera_permission_denied">App requires permission to scan QR code</string>
+    <string name="alert_info_title">Info</string>
+    <string name="alert_give_text">Give</string>
+    <string name="alert_camera_error">Camera initialization error:</string>
+    <string name="alert_camera_ok">OK</string>
+    <string name="alert_camera_permission_denied">App requires permission to scan QR code</string>
+
+    <string name="load">Load…</string>
 
 
 </resources>
