@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="DetailVM"
+            type="x.cross.androqr.viewmodels.DetailViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.DetailActivity">
@@ -45,6 +53,7 @@
         android:focusable="false"
         android:textColor="@color/black"
         android:enabled="false"
+        android:text="@{DetailVM.personData.secondName ?? @string/load}"
         app:layout_constraintBottom_toTopOf="@+id/et_parent_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
@@ -62,6 +71,7 @@
         android:focusable="false"
         android:inputType="none"
         android:textColor="@color/black"
+        android:text="@{DetailVM.personData.firstName ?? @string/load}"
         app:layout_constraintBottom_toTopOf="@+id/et_second_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
@@ -109,6 +119,7 @@
         android:focusable="false"
         android:inputType="none"
         android:textColor="@color/black"
+        android:text="@{DetailVM.personData.threeName ?? @string/load}"
         app:layout_constraintBottom_toTopOf="@+id/rv_extra"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="LabelFor"
@@ -161,6 +172,7 @@
         android:focusable="false"
         android:inputType="none"
         android:textColor="@color/black"
+        android:text="@{DetailVM.personData.role.name ?? @string/load}"
         app:layout_constraintBottom_toTopOf="@+id/et_name"
         app:layout_constraintEnd_toEndOf="parent"
         android:autofillHints=""
@@ -168,3 +180,4 @@
         tools:text="Person Role"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

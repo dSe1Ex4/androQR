@@ -8,14 +8,14 @@ import x.cross.androqr.model.dto.rest.UserSession
 
 interface RetrofitService {
     @FormUrlEncoded
-    @POST("/auth")
+    @POST("/user/auth")
     fun auth(@Field("login") login: String, @Field("password") password: String): Call<UserSession>
 
     @FormUrlEncoded
-    @POST("/person_info")
+    @POST("/user/person_info")
     fun personInfo(@Field("session_id") session_id: String, @Field("uuid") uuid: String): Call<InfoPerson>
 
     @FormUrlEncoded
-    @POST("/get_img")
+    @POST("/user/get_img")
     fun personImg(@Field("session_id") session_id: String, @Field("uuid") uuid: String): Call<ResponseBody>
 }

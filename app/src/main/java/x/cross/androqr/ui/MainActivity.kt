@@ -65,7 +65,9 @@ class MainActivity : BaseActivity() {
                 runOnUiThread {
                     Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
                 }
-                startActivity(Intent(this, DetailActivity::class.java))
+                startActivity(Intent(this, DetailActivity::class.java)
+                        .putExtra("UUID", it.text)
+                )
             }
 
             // Ошибка инициализации камеры
