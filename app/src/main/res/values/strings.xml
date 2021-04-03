@@ -32,9 +32,12 @@
     <string name="alert_info_title">Info</string>
     <string name="alert_give_text">Give</string>
     <string name="alert_camera_error">Camera initialization error:</string>
-    <string name="alert_camera_ok">OK</string>
-    <string name="alert_camera_permission_denied">App requires permission to scan QR code</string>
-
+    <string name="alert_ok">OK</string>
+    <string name="alert_warning_title">Warning</string>
+    <string name="alert_auth">Authorization</string>
+    <string name= "alert_camera_permission_denied">App requires permission to scan QR code</string>
+    <string name= "alert_message_passowrd_error">Your username or password is not correct</string>
+    <string name= "alert_message_qr_error">This QR code is not valid</string>
     <string name="load">Load…</string>
 
 

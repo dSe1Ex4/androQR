@@ -5,8 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
+import x.cross.androqr.R
 import x.cross.androqr.databinding.ActivityAuthBinding
+import x.cross.androqr.model.dto.ErrorCode
 import x.cross.androqr.repository.LoginStorage
 import x.cross.androqr.viewmodels.AuthViewModel
 import x.cross.androqr.viewmodels.AuthViewModelFactory
@@ -33,7 +36,24 @@ class AuthActivity : BaseActivity() {
             }
 
             errorMsg.observe(this@AuthActivity){
-                //TODO: Вывод ошибки
+                if (it.code == ErrorCode.AUTH )
+                {
+                    val builder = AlertDialog.Builder(this@AuthActivity)
+                    builder.setTitle(R.string.alert_warning_title)
+                            .setMessage(R.string.alert_message_passowrd_error)
+                            .setPositiveButton(R.string.alert_ok) {
+                                dialog, id ->  dialog.cancel()
+                            }
+                }
+                else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.RESPONSE)
+                {
+                    val builder = AlertDialog.Builder(this@AuthActivity)
+                    builder.setTitle(R.string.alert_warning_title)
+                            .setMessage(it.message)
+                            .setPositiveButton(R.string.alert_ok) {
+                                dialog, id ->  dialog.cancel()
+                            }
+                }
 
                 layout.loadBar.visibility = View.GONE
                 layout.bSignIn.isEnabled = true

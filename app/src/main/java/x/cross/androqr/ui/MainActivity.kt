@@ -75,7 +75,7 @@ class MainActivity : BaseActivity() {
                 AlertDialog.Builder(this)
                         .setTitle(getString(R.string.alert_error_title))
                         .setMessage(getString(R.string.alert_camera_error) + {it.message})
-                        .setPositiveButton(getString(R.string.alert_camera_ok)) { _: DialogInterface, _: Int -> }
+                        .setPositiveButton(getString(R.string.alert_ok)) { _: DialogInterface, _: Int -> }
                         .show()
             }
 
