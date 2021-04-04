@@ -2,6 +2,7 @@ package x.cross.androqr.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import x.cross.androqr.databinding.ActivityDetailBinding
@@ -11,6 +12,7 @@ import x.cross.androqr.viewmodels.DetailViewModel
 import x.cross.androqr.viewmodels.DetailViewModelFactory
 import com.bumptech.glide.Glide
 import x.cross.androqr.R
+import x.cross.androqr.model.dto.ErrorCode
 import x.cross.androqr.repository.LoginStorage
 import x.cross.androqr.ui.recycler.ExtraInfoAdapter
 
@@ -96,8 +98,29 @@ class DetailActivity : BaseActivity() {
             }
         })
 
-        viewModel.errorMsg.observe(this, { msg ->
-            //TODO: Вывод сообщения о ошибке
+        viewModel.errorMsg.observe(this, { it ->
+            if (it.code == ErrorCode.AUTH )
+            {
+                val builder = AlertDialog.Builder(this@DetailActivity)
+                builder.setTitle(R.string.alert_warning_title)
+                        .setMessage(R.string.alert_message_passowrd_error)
+                        .setPositiveButton(R.string.alert_auth) {
+                            dialog, id ->
+                            run {
+                                startActivity(Intent(this, AuthActivity::class.java))
+                                dialog.cancel()
+                            }
+                        }
+            }
+            else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.RESPONSE)
+            {
+                val builder = AlertDialog.Builder(this@DetailActivity)
+                builder.setTitle(R.string.alert_warning_title)
+                        .setMessage(it.message)
+                        .setPositiveButton(R.string.alert_ok) {
+                            dialog, id ->  dialog.cancel()
+                        }
+            }
         })
 
         viewModel.loadData(uuid)

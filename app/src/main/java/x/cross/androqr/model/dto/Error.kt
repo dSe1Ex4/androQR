@@ -3,5 +3,20 @@ package x.cross.androqr.model.dto
 data class Error(val message: String?, val code:ErrorCode)
 
 enum class ErrorCode(val id: Int){
-    AUTH(401), RESPONSE(400), CLIENT(0), THROWABLE(1)
+    /**
+     * Ошибка Аунтификации
+    * */
+    AUTH(401),
+    /**
+     * Ошибка ответа
+     * */
+    RESPONSE(400),
+    /**
+     * Клиентская ошибка
+     * */
+    CLIENT(0),
+    /**
+     * Ошибка исключения
+     * */
+    THROWABLE(1)
 }
