@@ -7,7 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AuthActivity">
-
+<RelativeLayout
+    android:id="@+id/layout_loadbar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="40dp"
+    android:layout_centerInParent="true"
+    android:background="@drawable/loadbar"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
     <ProgressBar
         android:id="@+id/load_bar"
         style="?android:attr/progressBarStyle"
@@ -18,6 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+</RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
