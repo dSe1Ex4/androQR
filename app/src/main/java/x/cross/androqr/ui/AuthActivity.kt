@@ -45,7 +45,7 @@ class AuthActivity : BaseActivity() {
                                 dialog, id ->  dialog.cancel()
                             }
                 }
-                else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.RESPONSE)
+                else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.CLIENT)
                 {
                     val builder = AlertDialog.Builder(this@AuthActivity)
                     builder.setTitle(R.string.alert_warning_title)
@@ -56,7 +56,10 @@ class AuthActivity : BaseActivity() {
                 }
 
                 layout.loadBar.visibility = View.GONE
+                layout.layoutLoadbar.visibility= View.GONE
                 layout.bSignIn.isEnabled = true
+                layout.etUsername.isEnabled = true
+                layout.etPassword.isEnabled = true
             }
         }
 
@@ -64,7 +67,11 @@ class AuthActivity : BaseActivity() {
             bSignIn.setOnClickListener {
                 viewModel.auth(etUsername.text.toString(), etPassword.text.toString())
                 bSignIn.isEnabled = false
+                layoutLoadbar.visibility = View.VISIBLE
                 loadBar.visibility = View.VISIBLE
+                layout.etUsername.isEnabled = false
+                layout.etPassword.isEnabled = false
+
             }
             etUsername.setText(loginStorage.userName ?: "")
         }
