@@ -1,4 +1,4 @@
-<img src="https://repository-images.githubusercontent.com/278657424/24fe8500-c6bd-11ea-9c0f-04640e0f6129" title="FVCproductions" alt="FVCproductions">
+<img src="https://i.ibb.co/h28txBv/androqr-bg.jpg">
 
 # AndroQR - Проход на мероприятие по QR коду
 ---
