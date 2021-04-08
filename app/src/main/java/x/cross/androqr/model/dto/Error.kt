@@ -16,6 +16,10 @@ enum class ErrorCode(val id: Int){
      * */
     CLIENT(0),
     /**
+     * Внутреняя ошибка сервера
+     * */
+    SERVER(500),
+    /**
      * Ошибка исключения
      * */
     THROWABLE(1)

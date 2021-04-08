@@ -22,6 +22,8 @@ class AuthViewModel(val loginStorage: LoginStorage) : ViewModel() {
 
 
     fun auth(login: String, pass: String){
+        loginStorage.userName = login
+
         RestService.onAuth(login, pass, object : OnInfoLoad<UserSession>{
             override fun onLoaded(info: UserSession) {
                 with(info.sessionId){
@@ -37,6 +39,7 @@ class AuthViewModel(val loginStorage: LoginStorage) : ViewModel() {
             override fun onError(response: Response<UserSession>) {
                 when(response.code()){
                     401 -> _errorMsg.value = Error(response.message(), ErrorCode.AUTH)
+                    500 -> _errorMsg.value = Error(null, ErrorCode.SERVER)
                     else ->  _errorMsg.value = Error(response.message(), ErrorCode.RESPONSE)
                 }
             }

@@ -40,5 +40,8 @@
     <string name= "alert_message_qr_error">This QR code is not valid</string>
     <string name="load">Load…</string>
 
+    <string name="error_500">Internal Server Error</string>
+    <string name="error_wtf">Something went wrong\nWe do not know what\nNo one knows</string>
+
 
 </resources>
