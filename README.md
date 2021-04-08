@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/h28txBv/androqr-bg.jpg">
+<img src="https://i.ibb.co/h28txBv/androqr-bg.jpg"/>
 
 # AndroQR - Проход на мероприятие по QR коду
 ---
@@ -17,11 +17,14 @@
 Логин: admin
 Пароль: 123
 ```
-<img src="https://i.ibb.co/F7bHmJv/image.png" alt="image" width=240px height=480px>
-4) Отсканировать выданый QR код (см. [Сайт](#сайт))
+
+
+
+<img src="https://i.ibb.co/F7bHmJv/image.png" alt="image" width=240px height=480px></img>
+
+4) Отсканировать выданый QR код (см. [Регистрация на мероприятии](#регистрация-на-мероприятии))
 5) Просмотреть и проверить данные
 Пока саша не доделает бек скришнота/кина не будет!
----
 
 ## Сайт 
 ### Регистрация на мероприятии
