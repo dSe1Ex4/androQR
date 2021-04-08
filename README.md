@@ -10,7 +10,7 @@
 ## Мобильное приложение AndroQR
 ### Первый запуск
 
-1) Скачать APK (тут будет ссылка)
+1) Скачать APK (https://github.com/dSe1Ex4/androQR/releases/download/Beta/androQR.apk)
 2) Установить приложение на ваше устройство
 3) Авторизоваться
 ```YML
