@@ -23,6 +23,9 @@
 <img src="https://i.ibb.co/F7bHmJv/image.png" alt="image" width=240px height=480px></img>
 
 4) Отсканировать выданый QR код (см. [Регистрация на мероприятии](#регистрация-на-мероприятии))
+
+<img src="https://i.ibb.co/HH018n5/photo-2021-04-08-22-12-06.jpg" alt="image" width=240px height=480px></img>
+
 5) Просмотреть и проверить данные
 Пока саша не доделает бек скришнота/кина не будет!
 
