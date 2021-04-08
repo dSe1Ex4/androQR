@@ -41,11 +41,6 @@ class DetailActivity : BaseActivity() {
 
         with(layout){
             testPersonData.let {
-/*                etName.setText(it.firstName)
-                etParentName.setText(it.threeName)
-                etSecondName.setText(it.secondName)
-                etRole.setText(it.role.name)*/
-
                 floatButToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
 
                 rvExtra.apply {
@@ -105,7 +100,7 @@ class DetailActivity : BaseActivity() {
                 builder.setTitle(R.string.alert_warning_title)
                         .setMessage(R.string.alert_message_passowrd_error)
                         .setPositiveButton(R.string.alert_auth) {
-                            dialog, id ->
+                            dialog, _ ->
                             run {
                                 startActivity(Intent(this, AuthActivity::class.java))
                                 dialog.cancel()
@@ -118,7 +113,7 @@ class DetailActivity : BaseActivity() {
                 builder.setTitle(R.string.alert_warning_title)
                         .setMessage(it.message)
                         .setPositiveButton(R.string.alert_ok) {
-                            dialog, id ->  dialog.cancel()
+                            dialog, _ ->  dialog.cancel()
                         }
             }
         })

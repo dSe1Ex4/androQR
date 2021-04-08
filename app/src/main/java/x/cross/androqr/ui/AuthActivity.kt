@@ -1,6 +1,5 @@
 package x.cross.androqr.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +18,8 @@ class AuthActivity : BaseActivity() {
     private lateinit var viewModel: AuthViewModel
     private lateinit var loginStorage: LoginStorage
 
+    private var alertDialog: AlertDialog? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,45 +37,49 @@ class AuthActivity : BaseActivity() {
             }
 
             errorMsg.observe(this@AuthActivity){
-                if (it.code == ErrorCode.AUTH )
-                {
-                    val builder = AlertDialog.Builder(this@AuthActivity)
-                    builder.setTitle(R.string.alert_warning_title)
-                            .setMessage(R.string.alert_message_passowrd_error)
-                            .setPositiveButton(R.string.alert_ok) {
-                                dialog, id ->  dialog.cancel()
-                            }
-                }
-                else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.CLIENT)
-                {
-                    val builder = AlertDialog.Builder(this@AuthActivity)
-                    builder.setTitle(R.string.alert_warning_title)
-                            .setMessage(it.message)
-                            .setPositiveButton(R.string.alert_ok) {
-                                dialog, id ->  dialog.cancel()
-                            }
+                when(it.code) {
+                    ErrorCode.AUTH -> {showDialog(getString(R.string.alert_message_passowrd_error))}
+                    ErrorCode.SERVER -> {showDialog(if (it.message.isNullOrEmpty()) getString(R.string.error_500) else it.message)}
+                    else -> {showDialog(it.message ?: getString(R.string.error_wtf))}
                 }
 
-                layout.loadBar.visibility = View.GONE
-                layout.layoutLoadbar.visibility= View.GONE
-                layout.bSignIn.isEnabled = true
-                layout.etUsername.isEnabled = true
-                layout.etPassword.isEnabled = true
+                showLoading(true)
             }
         }
 
         with(layout){
             bSignIn.setOnClickListener {
                 viewModel.auth(etUsername.text.toString(), etPassword.text.toString())
-                bSignIn.isEnabled = false
-                layoutLoadbar.visibility = View.VISIBLE
-                loadBar.visibility = View.VISIBLE
-                layout.etUsername.isEnabled = false
-                layout.etPassword.isEnabled = false
-
+                showLoading()
             }
             etUsername.setText(loginStorage.userName ?: "")
         }
 
+    }
+
+    private fun showLoading(isLoaded: Boolean=false){
+        with(layout){
+            layoutLoadbar.visibility = if (isLoaded) View.INVISIBLE else View.VISIBLE
+            loadBar.visibility = if (isLoaded) View.INVISIBLE else View.VISIBLE
+
+            bSignIn.isEnabled = isLoaded
+            layout.etUsername.isEnabled = isLoaded
+            layout.etPassword.isEnabled = isLoaded
+        }
+    }
+
+    private fun showDialog(msg: String){
+        alertDialog =
+            AlertDialog.Builder(this@AuthActivity).setTitle(R.string.alert_warning_title)
+            .setMessage(msg)
+            .setPositiveButton(R.string.alert_ok) { dialog, id ->
+                dialog.cancel()
+            }.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        alertDialog?.cancel()
     }
 }
