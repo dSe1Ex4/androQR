@@ -1,5 +1,6 @@
 package x.cross.androqr.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,6 +42,7 @@ class DetailViewModel(var loginStorage: LoginStorage) : ViewModel(){
                 override fun onError(response: Response<ResponseBody>) {
                     when(response.code()){
                         401 -> _errorMsg.value = Error(response.message(), ErrorCode.AUTH)
+                        500 -> _errorMsg.value = Error(null, ErrorCode.SERVER)
                         else ->  _errorMsg.value = Error(response.message(), ErrorCode.RESPONSE)
                     }
                 }
@@ -62,6 +64,7 @@ class DetailViewModel(var loginStorage: LoginStorage) : ViewModel(){
                 override fun onError(response: Response<InfoPerson>) {
                     when(response.code()){
                         401 -> _errorMsg.value = Error(response.message(), ErrorCode.AUTH)
+                        500 -> _errorMsg.value = Error(null, ErrorCode.SERVER)
                         else ->  _errorMsg.value = Error(response.message(), ErrorCode.RESPONSE)
                     }
                 }

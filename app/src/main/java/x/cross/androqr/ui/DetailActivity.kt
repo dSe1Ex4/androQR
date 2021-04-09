@@ -2,7 +2,9 @@ package x.cross.androqr.ui
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.annotation.Keep
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import x.cross.androqr.databinding.ActivityDetailBinding
@@ -16,8 +18,9 @@ import x.cross.androqr.model.dto.ErrorCode
 import x.cross.androqr.repository.LoginStorage
 import x.cross.androqr.ui.recycler.ExtraInfoAdapter
 
+
 class DetailActivity : BaseActivity() {
-    private lateinit var layout: ActivityDetailBinding
+    private lateinit var detailBinding: ActivityDetailBinding
     private lateinit var viewModel: DetailViewModel
     private lateinit var loginStorage: LoginStorage
 
@@ -27,8 +30,7 @@ class DetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        layout = ActivityDetailBinding.inflate(layoutInflater)
-        setContentView(layout.root)
+        detailBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
 
         supportActionBar?.hide()
 
@@ -39,7 +41,7 @@ class DetailActivity : BaseActivity() {
         val textLoad = getString(R.string.load)
         val testPersonData = PersonData(textLoad, textLoad, textLoad, RoleData(textLoad), mapOf(textLoad to textLoad))
 
-        with(layout){
+        with(detailBinding){
             testPersonData.let {
                 floatButToScanner.setOnClickListener { startActivity(Intent(this@DetailActivity, MainActivity::class.java)) }
 
@@ -64,11 +66,11 @@ class DetailActivity : BaseActivity() {
                     .load(bytes) //источник изображения указан либо как путь к каталогу, URI или URL адреса.
                     .override(300, 300)
                     .circleCrop() // this cropping technique scales the image so that it fills the requested bounds and then crops the extra.
-                    .into(layout.imgPerson)
+                    .into(detailBinding.imgPerson)
         })
 
         viewModel.personData.observe(this, { personData ->
-            with(layout){
+            with(detailBinding){
                 val person = viewModel.personData.value
 
                 person?.let {
@@ -105,7 +107,7 @@ class DetailActivity : BaseActivity() {
                                 startActivity(Intent(this, AuthActivity::class.java))
                                 dialog.cancel()
                             }
-                        }
+                        }.show()
             }
             else if (it.code == ErrorCode.RESPONSE || it.code == ErrorCode.THROWABLE || it.code == ErrorCode.RESPONSE)
             {
@@ -114,7 +116,7 @@ class DetailActivity : BaseActivity() {
                         .setMessage(it.message)
                         .setPositiveButton(R.string.alert_ok) {
                             dialog, _ ->  dialog.cancel()
-                        }
+                        }.show()
             }
         })
 

@@ -19,14 +19,14 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private lateinit var view: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private var codeScanner: CodeScanner? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        view = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(view.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity() {
 
     @AfterPermissionGranted(RQ_CODE_CAMERA)
     private fun initQRScanner(){
-        codeScanner = CodeScanner(this, view.scannerView)
+        codeScanner = CodeScanner(this, binding.scannerView)
         // Parameters (default values)
 
         codeScanner?.let { cs ->
@@ -79,7 +79,7 @@ class MainActivity : BaseActivity() {
                         .show()
             }
 
-            view.scannerView.setOnClickListener { cs.startPreview() }
+            binding.scannerView.setOnClickListener { cs.startPreview() }
         }
     }
 

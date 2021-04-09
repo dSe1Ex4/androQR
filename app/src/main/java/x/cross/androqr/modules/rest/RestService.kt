@@ -27,6 +27,9 @@ object RestService {
                             onLoaded.onLoaded(response.body()!!)
                         } else {
                             onLoaded.onError(response)
+                            if (Config.DEBUG) {
+                                Log.e("REST ERROR", response.toString())
+                            }
                         }
                     }
 
@@ -51,6 +54,9 @@ object RestService {
                             onLoaded.onLoaded(response.body()!!)
                         } else {
                             onLoaded.onError(response)
+                            if (Config.DEBUG) {
+                                Log.e("REST ERROR", response.toString())
+                            }
                         }
                     }
 
@@ -75,6 +81,9 @@ object RestService {
                             onLoaded.onLoaded(response.body()!!.bytes())
                         } else {
                             onLoaded.onError(response)
+                            if (Config.DEBUG) {
+                                Log.e("REST ERROR", response.toString())
+                            }
                         }
 
                     }

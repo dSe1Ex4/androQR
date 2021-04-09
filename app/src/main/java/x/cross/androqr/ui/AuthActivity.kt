@@ -2,7 +2,6 @@ package x.cross.androqr.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +13,7 @@ import x.cross.androqr.viewmodels.AuthViewModel
 import x.cross.androqr.viewmodels.AuthViewModelFactory
 
 class AuthActivity : BaseActivity() {
-    private lateinit var layout: ActivityAuthBinding
+    private lateinit var authBinding: ActivityAuthBinding
     private lateinit var viewModel: AuthViewModel
     private lateinit var loginStorage: LoginStorage
 
@@ -23,8 +22,8 @@ class AuthActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        layout = ActivityAuthBinding.inflate(layoutInflater)
-        setContentView(layout.root)
+        authBinding = ActivityAuthBinding.inflate(layoutInflater)
+        setContentView(authBinding.root)
 
         loginStorage = LoginStorage(applicationContext)
 
@@ -47,7 +46,7 @@ class AuthActivity : BaseActivity() {
             }
         }
 
-        with(layout){
+        with(authBinding){
             bSignIn.setOnClickListener {
                 viewModel.auth(etUsername.text.toString(), etPassword.text.toString())
                 showLoading()
@@ -58,13 +57,13 @@ class AuthActivity : BaseActivity() {
     }
 
     private fun showLoading(isLoaded: Boolean=false){
-        with(layout){
+        with(authBinding){
             layoutLoadbar.visibility = if (isLoaded) View.INVISIBLE else View.VISIBLE
             loadBar.visibility = if (isLoaded) View.INVISIBLE else View.VISIBLE
 
             bSignIn.isEnabled = isLoaded
-            layout.etUsername.isEnabled = isLoaded
-            layout.etPassword.isEnabled = isLoaded
+            authBinding.etUsername.isEnabled = isLoaded
+            authBinding.etPassword.isEnabled = isLoaded
         }
     }
 

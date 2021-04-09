@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity() {
 
 
     private val activityScope = CoroutineScope(Dispatchers.Main)
-    private lateinit var view: ActivitySplashBinding
+    private lateinit var binding: ActivitySplashBinding
     private lateinit var mainIntent: Intent
 
     private var debugDialog: AlertDialog? = null
@@ -28,8 +28,8 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        view = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(view.root)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
 
@@ -43,7 +43,7 @@ class SplashActivity : BaseActivity() {
 
         setFullScreen()
 
-        with(view.splashAnim){
+        with(binding.splashAnim){
             textAdapter = DefaultBinaryTextAdapter()
             speed = 0.005
             rectWidth = 40
